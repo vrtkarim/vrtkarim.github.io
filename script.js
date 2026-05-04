@@ -15,17 +15,53 @@
   // Mobile nav toggle
   const toggle = document.getElementById('navToggle');
   const links = document.querySelector('.nav__links');
+
+  const closeMenu = () => {
+    if (!toggle || !links) return;
+    links.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+  };
+
+  const openMenu = () => {
+    if (!toggle || !links) return;
+    links.classList.add('is-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
+  };
+
   if (toggle && links) {
     toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(open));
+      links.classList.contains('is-open') ? closeMenu() : openMenu();
     });
+
+    // Close when a nav link is tapped
     links.querySelectorAll('a').forEach((a) =>
-      a.addEventListener('click', () => {
-        links.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      })
+      a.addEventListener('click', closeMenu)
     );
+
+    // Close when tapping outside the menu
+    document.addEventListener('click', (e) => {
+      if (
+        links.classList.contains('is-open') &&
+        !links.contains(e.target) &&
+        !toggle.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close if resizing back to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) closeMenu();
+    });
   }
 
   // Reveal-on-scroll
@@ -47,14 +83,17 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Project card spotlight effect (mouse-follow gradient)
-  document.querySelectorAll('.card').forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.setProperty('--mx', `${x}%`);
-      card.style.setProperty('--my', `${y}%`);
+  // Project card spotlight effect (mouse-follow gradient) — desktop only
+  const supportsHover = window.matchMedia('(hover: hover)').matches;
+  if (supportsHover) {
+    document.querySelectorAll('.card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', `${x}%`);
+        card.style.setProperty('--my', `${y}%`);
+      });
     });
-  });
+  }
 })();
