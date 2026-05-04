@@ -1,4 +1,4 @@
-# Karim El Yaagoubi — Portfolio
+# Karim El Yaagoubi â€” Portfolio
 
 A clean, fast, single-page portfolio for **Karim El Yaagoubi**, Software Engineer specializing in Flutter, Spring Boot, and Semantic Web technologies.
 
@@ -14,7 +14,7 @@ portfolio/
 ??? styles.css      # Theme, layout, animations
 ??? script.js       # Nav, reveal-on-scroll, card spotlight
 ??? favicon.svg     # Site icon
-??? resume.pdf      # Downloadable résumé (linked from the site)
+??? resume.pdf      # Downloadable rÃ©sumÃ© (linked from the site)
 ??? .nojekyll       # Tells GitHub Pages to serve files as-is
 ??? README.md
 ```
@@ -61,11 +61,11 @@ The `.nojekyll` file ensures GitHub Pages serves the assets directly without Jek
 
 ## Customizing
 
-- **Colors** — edit the CSS variables at the top of `styles.css` (`--red`, `--bg`, etc.).
-- **Content** — all text lives in `index.html`. Update the hero, projects, skills, education, and contact sections directly.
-- **Résumé** — replace `resume.pdf` to update the downloadable file.
-- **Favicon** — replace `favicon.svg` with your preferred icon.
+- **Colors** â€” edit the CSS variables at the top of `styles.css` (`--red`, `--bg`, etc.).
+- **Content** â€” all text lives in `index.html`. Update the hero, projects, skills, education, and contact sections directly.
+- **RÃ©sumÃ©** â€” replace `resume.pdf` to update the downloadable file.
+- **Favicon** â€” replace `favicon.svg` with your preferred icon.
 
 ## License
 
-Personal portfolio © Karim El Yaagoubi.
+Personal portfolio Â© Karim El Yaagoubi.
