@@ -96,4 +96,20 @@
       });
     });
   }
+
+  // Make linked project cards clickable while preserving inner links.
+  document.querySelectorAll('[data-card-link]').forEach((card) => {
+    const openProject = () => window.open(card.dataset.cardLink, '_blank', 'noopener,noreferrer');
+
+    card.addEventListener('click', (event) => {
+      if (!event.target.closest('a, button')) openProject();
+    });
+
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openProject();
+      }
+    });
+  });
 })();
