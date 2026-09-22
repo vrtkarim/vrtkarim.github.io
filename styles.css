@@ -222,9 +222,7 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   padding: clamp(3rem, 6vw, 6rem) 0 clamp(4rem, 8vw, 7rem);
 }
 .hero__inner {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 3.5rem;
+  display: block;
   align-items: center;
 }
 
@@ -306,52 +304,6 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   color: var(--text-mute);
   margin-top: 0.2rem;
 }
-
-/* ==== Code window ==== */
-.window {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft), 0 0 0 1px rgba(225, 6, 0, 0.06) inset;
-  transform: rotate(0.4deg);
-  transition: transform 0.4s ease;
-}
-.window:hover { transform: rotate(0deg) translateY(-4px); }
-
-.window__bar {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.7rem 1rem;
-  background: var(--bg-2);
-  border-bottom: 1px solid var(--border);
-}
-.dot {
-  width: 11px; height: 11px;
-  border-radius: 50%;
-  background: var(--border-strong);
-}
-.dot--red { background: var(--red); box-shadow: 0 0 8px var(--red-glow); }
-.window__title {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-mute);
-}
-
-.code {
-  margin: 0;
-  padding: 1.4rem 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: var(--text);
-  overflow-x: auto;
-}
-.c-key { color: #ff5757; }
-.c-cls { color: #fbbf77; }
-.c-str { color: #7ee787; }
 
 .hero__scroll {
   position: absolute;
@@ -757,8 +709,6 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 
 /* ? 1024px — tablets / small laptops */
 @media (max-width: 1024px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero__panel { order: -1; max-width: 560px; margin-inline: auto; width: 100%; }
   .hero__content { text-align: left; }
   .nav__cta { display: none; }
 }
@@ -829,12 +779,6 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   .hero__meta span { font-size: 0.75rem; }
 
   .hero__scroll { display: none; }
-
-  /* Code window — flatten and shrink */
-  .window { transform: none; }
-  .window:hover { transform: none; }
-  .code { font-size: 0.78rem; padding: 1.1rem 1.2rem; line-height: 1.65; }
-  .window__bar { padding: 0.6rem 0.85rem; }
 
   /* Sections */
   .section { padding: 3.5rem 0; }
@@ -911,7 +855,6 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   .brand__name { display: none; }
   .nav__inner { gap: 0.75rem; }
   .hero__title { font-size: 1.7rem; }
-  .code { font-size: 0.72rem; padding: 1rem; }
   .card { padding: 1.2rem; }
   .section__num { font-size: 0.78rem; }
 }
